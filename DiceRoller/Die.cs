@@ -7,6 +7,8 @@
 /// any positive byte value (1-255 inclusive).</remarks>
 public class Die
 {
+    private const byte MAX_SIZE = 20;
+
     // Private Variables
     private readonly Random rand = new();
 
@@ -22,7 +24,7 @@ public class Die
     /// </exception>
     public Die(byte numSides)
     {
-        if (numSides < 1 || numSides > 20)
+        if (numSides < 1 || numSides > MAX_SIZE)
         {
             throw new ArgumentOutOfRangeException(nameof(numSides), "The number of sides must be between 1 and 20.");
         }

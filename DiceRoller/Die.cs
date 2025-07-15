@@ -7,6 +7,10 @@
 /// any positive byte value (1-255 inclusive).</remarks>
 public class Die
 {
+    // Private Variables
+    private readonly Random rand = new();
+
+
     /// <summary>
     /// Creates a new instance of the <see cref="Die"/> class with a specified number of sides.
     /// </summary>
@@ -28,8 +32,9 @@ public class Die
 
     /// <summary>
     /// The current face-up value of the die.
+    /// This property defaults to null until the die is rolled.
     /// </summary>
-    public byte FaceUpValue { get; private set; }
+    public byte? FaceUpValue { get; private set; }
 
     /// <summary>
     /// Rolls the die and returns the face-up value.
@@ -38,11 +43,9 @@ public class Die
     public byte Roll()
     {
         // Generate a random number between 1 and numSides (inclusive)
-        Random rand = new();
-
         // Note: (byte) is like Convert.ToByte() but more efficient
         FaceUpValue = (byte)rand.Next(1, numSides + 1);
 
-        return FaceUpValue;
+        return (byte)FaceUpValue;
     }
 }
